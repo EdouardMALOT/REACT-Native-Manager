@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
@@ -41,6 +42,8 @@ class LoginForm extends React.Component {
           />
         </CardSection>
 
+        <Text style={Styles.TextError}>{this.props.error}</Text>
+
         <CardSection>
           <Button WhenPress={this.onButtonPress.bind(this)}>
             Login
@@ -52,11 +55,17 @@ class LoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    email: state.auth.email,
-    password: state.auth.password
-  };
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error } = auth;
+  return { email, password, error };
+};
+
+const Styles = {
+  TextError: {
+    color: 'red',
+    fontSize: 20,
+    alignSelf: 'center'
+  }
 };
 
 export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginForm);
