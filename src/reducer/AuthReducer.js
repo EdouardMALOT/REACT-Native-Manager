@@ -3,7 +3,13 @@ import { EMAIL_CHANGED, PASSWORD_CHANGED,
          LOGIN_USER
         } from '../actions/types.js';
 
-const INITIALE_STATE = { email: 'ed@test.com', password: '', user: null, error: '', loading: false };
+const INITIALE_STATE = {
+  email: 'ed@test.com',
+  password: '12345678',
+  user: null,
+  error: '',
+  loading: false
+};
 
 export default (state = INITIALE_STATE, action) => {
   switch (action.type) {
