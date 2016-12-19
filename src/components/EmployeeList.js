@@ -24,8 +24,6 @@ class EmployeeList extends React.Component {
   }
 
   renderRow(employee) {
-    console.log('renderRow');
-    console.log(employee);
     return (<EmployeeListItem employee={employee} />);
   }
 
